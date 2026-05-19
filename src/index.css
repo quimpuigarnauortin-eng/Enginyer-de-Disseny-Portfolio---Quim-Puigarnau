@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", sans-serif;
+  --color-accent: #6b8e23; /* Olive/Moss Green - More rustic */
+  --color-bg-base: #f7f6f2; /* Warm Off-white / Stone */
+  --color-ink: #2d2d2a; /* Warm Charcoal instead of pure black */
+  --color-border-soft: rgba(45, 45, 42, 0.15);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-base text-ink font-sans selection:bg-accent selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight uppercase font-extrabold;
+  }
+
+  /* Remove all rounded corners - per previous request */
+  * {
+    border-radius: 0 !important;
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.project-card-image {
+  @apply transition-all duration-700 ease-in-out;
+}
+
+.project-card:hover .project-card-image {
+  @apply scale-105 opacity-90;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.nav-link {
+  @apply relative py-1 overflow-hidden transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-[1px] bg-accent -translate-x-full transition-transform duration-500;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  @apply translate-x-0;
+}
+
+
